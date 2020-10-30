@@ -4,7 +4,6 @@ shopt -s extglob
 checkname(){
 Firstpat="^[[:upper:]]{1}[[:lower:]]{3,}$"
 Lastpat="^[[:upper:]]{1}[[:lower:]]{3,}$"
-
 if [[ $Firstname =~ $Firstpat && $Lastname =~ $Lastpat ]]
 then
    echo "Valid name"
@@ -20,6 +19,7 @@ read Lastname
 checkname $Firstname $Lastname
 
 
+
 checkemail(){
 Emailpat="^[_a-z0-9-]+(.[a-z0-9-]+)+([@]{1})+[a-z0-9-]+(.[a-z0-9-]{3,})*(.[a-z]{2,4})$"
 if [[ $Email =~ $Emailpat ]]
@@ -29,9 +29,11 @@ else
 echo "Please enter valid email address format"
 fi
 }
+
 echo "Enter your Email Address"
 read Email
 checkemail $Email
+
 
 
 checkcontact(){
@@ -44,8 +46,25 @@ else
    echo "Please enter valid Contact format"
 fi
 }
+
 echo "Enter a Contact Number"
 read Contact
 checkcontact $Contact
 
+
+
+checkPassword(){
+Pswdpat="^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@!#$%])(?=.*[a-zA-Z0-9@!#$]).{8,}$"
+
+if [[ $UserPassword =~ $Pswdpat ]]
+then
+   echo "Strong Password"
+else
+   echo "Your Password is not matching given criteria"
+fi
+}
+
+echo "Enter your Password"
+read Password
+checkPassword $UserPassword
 
